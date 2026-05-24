@@ -27,12 +27,7 @@
             </div>
         @endforeach
 
-        <form method="POST" action="/comments">
-            @csrf
-            <input type="hidden" name="post_id" value="{{ $post->id }}">
-            <input type="text" name="content" placeholder="Scrivi commento">
-            <button class="btn">Commenta</button>
-        </form>
+        
 
     </div>
 @endforeach

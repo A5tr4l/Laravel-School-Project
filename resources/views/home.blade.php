@@ -35,6 +35,9 @@
 <hr>
 
 @foreach($posts as $post)
+@if ($post->topic_id === $topic->id)
+    
+
     <div style="border:1px solid #ccc; margin:10px; padding:10px;">
         <b>{{ $post->title }}</b>
         <p>{{ $post->content }}</p>
@@ -44,13 +47,15 @@
         <input type="hidden" name="post_id" value="{{ $post->id }}">
         <input type="text" name="content" placeholder="Scrivi un commento">
         <button>Invia</button>
-    </form>
+    </form> 
 
     @foreach($post->comments as $comment)
         <p><strong>{{ $comment->user->name }}</strong>: {{ $comment->content }}</p>
     @endforeach
     </div>
-@endforeach
+    @endif
+    @endforeach
+
 
 <form method="POST" action="{{ route('logout') }}">
                 @csrf
