@@ -6,14 +6,14 @@
 <h1>📚 Storico Topic</h1>
 
 @foreach($topics as $topic)
-    <div class="card" style="border:solid black 3px">
+    <div class="card">
         <div class="topic-header">
             {{ $topic->title }}
         </div>
 
         <p>{{ $topic->content }}</p>
 
-        <small>{{ $topic->created_at }}</small>
+        <small>📅 {{ \Carbon\Carbon::parse($topic->topic_date)->translatedFormat('d F Y') }}</small>
 
         <br><br>
 

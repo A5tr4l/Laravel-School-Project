@@ -20,7 +20,7 @@ class TopicController extends Controller
         Topic::create([
             'title' => $request->title,
             'content' => $request->content,
-            'topic_date' => $request->topic_date
+            'topic_date' => now()->toDateString()
         ]);
 
         return redirect('/');
