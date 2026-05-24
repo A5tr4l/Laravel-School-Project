@@ -20,6 +20,7 @@ use App\Http\Controllers\PostController;
 
 Route::post('/posts', [PostController::class, 'store'])->middleware('auth');
 Route::get('/', [PostController::class, 'index'])->middleware('auth');
+Route::get('/search', [PostController::class, 'search'])->middleware('auth');
 
 use App\Http\Controllers\CommentController;
 

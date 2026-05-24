@@ -4,6 +4,19 @@
 
 <h1>Benvenuto {{ auth()->user()->name }}</h1>
 
+@if($errors->has('moderation'))
+    <div class="alert-error">
+        <strong>Attenzione!</strong> {{ $errors->first('moderation') }}
+    </div>
+@endif
+
+<div class="search-box">
+    <h3>Ricerca Intelligente</h3>
+    <form method="GET" action="/search" style="margin-bottom: 0;">
+        <input type="text" name="q" placeholder="Es: post che parlano di politica, opinioni sul referendum..." required>
+        <button type="submit">Cerca col Significato</button>
+    </form>
+</div>
 <h2>📌 Topic del giorno</h2>
 
 @if(auth()->user()->is_admin)
