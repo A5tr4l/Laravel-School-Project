@@ -14,6 +14,12 @@ use Illuminate\Notifications\Notifiable;
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable
 {
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
@@ -24,9 +30,17 @@ class User extends Authenticatable
      */
     protected function casts(): array
     {
+        
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
     }
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    
 }
