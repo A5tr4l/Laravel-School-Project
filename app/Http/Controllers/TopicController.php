@@ -28,6 +28,11 @@ class TopicController extends Controller
 
     public function history()
         {
+
+            if (!auth()->user()->is_admin) {
+                return redirect('/');
+            }
+
             $topics = Topic::orderBy('created_at', 'desc')->get();
 
             return view('topics.history', compact('topics'));
@@ -35,6 +40,10 @@ class TopicController extends Controller
 
         public function show(Topic $topic)
         {
+            if (!auth()->user()->is_admin) {
+                return redirect('/');
+            }
+
             $posts = $topic->posts()->with('comments.user', 'user')->latest()->get();
 
             return view('topics.show', compact('topic', 'posts'));
